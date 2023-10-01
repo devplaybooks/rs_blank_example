@@ -24,7 +24,7 @@ jobs:
             rustflags: --cfg thiserror_nightly_testing
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@master
         with:
           toolchain: ${{matrix.rust}}
@@ -39,7 +39,7 @@ jobs:
     if: github.event_name != 'pull_request'
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@nightly
         with:
           components: clippy, rust-src
@@ -51,7 +51,7 @@ jobs:
     if: github.event_name != 'pull_request'
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@nightly
         with:
           components: rustfmt, rust-src
@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@miri
       - run: cargo miri test
         env:
@@ -74,6 +74,6 @@ jobs:
     if: github.event_name != 'pull_request'
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: dtolnay/install@cargo-outdated
       - run: cargo outdated --workspace --exit-code 1
